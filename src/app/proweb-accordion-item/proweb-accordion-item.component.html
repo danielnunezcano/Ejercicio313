@@ -1,6 +1,4 @@
-
-  <button [class]="'accordion'" (click)="pulsar()">{{labelComponent}}</button>
-  <div [ngClass]="{'panel1': true, 'panel2': bool}">
-    <ng-content></ng-content>
-  </div>
-
+<button [class]="'accordion'" (click)="pulsar()">{{labelComponent}} </button>
+<div [ngClass]="{'panel1': true, 'panel2': bool}">
+  <ng-content></ng-content>
+</div>

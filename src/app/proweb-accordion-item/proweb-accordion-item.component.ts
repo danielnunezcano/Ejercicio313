@@ -9,11 +9,12 @@ export class ProwebAccordionItemComponent implements OnInit {
 
   @Input('label') label;
   @Input() contenido;
+  @Input() opened;
   labelComponent: string;
   bool: boolean;
 
+
   constructor() {
-    this.bool = false;
   }
 
   pulsar() {
@@ -27,7 +28,13 @@ export class ProwebAccordionItemComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.labelComponent = '\u21E8' + this.label;
+    if (this.opened === 'true') {
+      this.bool = false;
+      this.labelComponent = '\u21E8' + this.label;
+    } else {
+      this.bool = true;
+      this.labelComponent = '\u21E9' + this.label;
+    }
   }
 
 }

@@ -1,15 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterContentInit, Component, Input, ContentChildren, QueryList} from '@angular/core';
+import {ProwebAccordionItemComponent} from '../proweb-accordion-item/proweb-accordion-item.component';
 
 @Component({
   selector: 'app-proweb-accordion',
   templateUrl: './proweb-accordion.component.html',
   styleUrls: ['./proweb-accordion.component.css']
 })
-export class ProwebAccordionComponent implements OnInit {
+export class ProwebAccordionComponent implements AfterContentInit {
 
-  constructor() { }
+  @Input() multi: boolean;
+  @ContentChildren(ProwebAccordionItemComponent) items: QueryList<ProwebAccordionItemComponent>;
+  auxItems = [];
 
-  ngOnInit() {
+  ngAfterContentInit() {
+    this.items.forEach(item => {
+      item.opened = 'false';
+      this.auxItems.push(item);
+    });
   }
 
 }
